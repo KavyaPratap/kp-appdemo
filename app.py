@@ -8,6 +8,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://dbos_user:root1234@userdb-
 db = SQLAlchemy(app)
 socketio = SocketIO(app)
 
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 # Database models
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
