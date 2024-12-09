@@ -1,1 +1,28 @@
-dbos-cloud app deploy
+dbos:
+  runtime:
+    type: "local"  # Use "cloud" if deployed
+    concurrency: 10
+
+  database:
+    type: "postgresql"
+    host: "userdb-c32ad8c6-1c93-447c-a4df-201bc1e6f7b5.cvc4gmaa6qm9.us-east-1.rds.amazonaws.com"
+    port: 5432
+    username: "dbos_user"
+    password: "root1234"
+    database_name: "postgres"
+
+  logging:
+    level: "info"
+    output: "file"
+    file: "logs/dbos.log"
+
+  security:
+    jwt_secret: "your_jwt_secret"
+    cors:
+      allowed_origins:
+        - "http://localhost:3000"
+        - "https://your-production-domain.com"
+
+  cloud:
+    aws_region: "us-east-1"
+    s3_bucket: "your-bucket-name"
